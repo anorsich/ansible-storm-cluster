@@ -1,0 +1,12 @@
+---
+- name: Storm Cluster | Install the supervisord storm-ui script
+  template: src=storm-ui.conf.j2 dest=/etc/supervisor/conf.d/storm-ui.conf owner=root group=root mode=0644
+  notify:
+    - reload supervisord
+  sudo: yes
+
+- name: Storm Cluster | Install the supervisord storm-nimbus script
+  template: src=storm-nimbus.conf.j2 dest=/etc/supervisor/conf.d/storm-nimbus.conf owner=root group=root mode=0644
+  notify:
+    - reload supervisord
+  sudo: yes

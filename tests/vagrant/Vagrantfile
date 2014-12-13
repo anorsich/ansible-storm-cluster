@@ -1,0 +1,53 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define "zookeeper" do |zookeeper|
+      zookeeper.vm.box = "precise64"
+      zookeeper.vm.box_url = "http://files.vagrantup.com/precise64.box"
+      zookeeper.vm.network :private_network, ip: "192.168.50.10"
+      zookeeper.vm.network "forwarded_port", guest: 22, host: 2200
+
+      zookeeper.vm.provider :virtualbox do |vb|
+        vb.gui = false
+        vb.customize ["modifyvm", :id, "--memory", "512"]
+      end
+  end
+
+  config.vm.define "nimbus" do |nimbus|
+      nimbus.vm.box = "precise64"
+      nimbus.vm.box_url = "http://files.vagrantup.com/precise64.box"
+      nimbus.vm.network :private_network, ip: "192.168.50.11"
+      nimbus.vm.network "forwarded_port", guest: 22, host: 2201
+
+      nimbus.vm.provider :virtualbox do |vb|
+        vb.gui = false
+        vb.customize ["modifyvm", :id, "--memory", "512"]
+      end
+  end
+
+  config.vm.define "supervisor1" do |supervisor1|
+      supervisor1.vm.box = "precise64"
+      supervisor1.vm.box_url = "http://files.vagrantup.com/precise64.box"
+      supervisor1.vm.network :private_network, ip: "192.168.50.20"
+      supervisor1.vm.network "forwarded_port", guest: 22, host: 2210
+
+      supervisor1.vm.provider :virtualbox do |vb|
+        vb.gui = false
+        vb.customize ["modifyvm", :id, "--memory", "512"]
+      end
+  end
+  config.vm.define "supervisor2" do |supervisor2|
+      supervisor2.vm.box = "precise64"
+      supervisor2.vm.box_url = "http://files.vagrantup.com/precise64.box"
+      supervisor2.vm.network :private_network, ip: "192.168.50.21"
+      supervisor2.vm.network "forwarded_port", guest: 22, host: 2211
+
+      supervisor2.vm.provider :virtualbox do |vb|
+        vb.gui = false
+        vb.customize ["modifyvm", :id, "--memory", "512"]
+      end
+  end
+end

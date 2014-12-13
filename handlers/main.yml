@@ -1,0 +1,4 @@
+---
+- name: reload supervisord
+  sudo: yes
+  command: supervisorctl reload

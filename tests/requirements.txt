@@ -1,0 +1,3 @@
+anorsich.storm, master
+anorsich.zookeeper, master
+zenoamaro.supervisord, v0.3.0

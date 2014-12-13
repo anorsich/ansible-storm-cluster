@@ -1,0 +1,6 @@
+---
+- name: Storm Cluster | Install the supervisord superviser script
+  template: src=storm-supervisor.conf.j2 dest=/etc/supervisor/conf.d/storm-supervisor.conf owner=root group=root mode=0644
+  notify:
+    - reload supervisord
+  sudo: yes

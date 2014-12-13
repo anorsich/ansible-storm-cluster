@@ -1,0 +1,12 @@
+---
+- hosts: nimbus
+  roles:
+    - { role: ../../../ansible-storm-cluster, storm_cluser_storm_role: true, storm_cluser_enable_nimbus: true }
+
+- hosts: supervisors
+  roles:
+    - { role: ../../../ansible-storm-cluster, storm_cluser_storm_role: true, storm_cluser_enable_supervisor: true }
+
+- hosts: zookeepers
+  roles:
+    - { role: ../../../ansible-storm-cluster, storm_cluser_zookeeper_role: true }

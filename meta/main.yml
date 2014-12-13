@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Andrew Orsich
+  description: Install and configure Apache Storm
+  license: BSD
+  min_ansible_version: 1.7
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+  categories:
+  - cloud
+  - clustering
+dependencies: 
+  - { role: anorsich.storm, when: storm_cluser_storm_role == true, sudo: yes }
+  - { role: zenoamaro.supervisord, when: storm_cluser_storm_role == true, sudo: yes  }
+  - { role: anorsich.zookeeper, when: storm_cluser_zookeeper_role == true, sudo: yes }

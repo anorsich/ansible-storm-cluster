@@ -1,0 +1,13 @@
+---
+- name: Storm Cluster | Update APT cache
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
+
+- include: nimbus.yml
+  when: storm_cluser_enable_nimbus == true
+
+- include: supervisor.yml
+  when: storm_cluser_enable_supervisor == true
+
+- include: zookeeper.yml
+  when: storm_cluser_zookeeper_role == true  

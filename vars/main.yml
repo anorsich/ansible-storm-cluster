@@ -1,0 +1,5 @@
+---
+storm_cluser_storm_role: false
+storm_cluser_zookeeper_role: false
+storm_cluser_enable_nimbus: false
+storm_cluser_enable_supervisor: false
